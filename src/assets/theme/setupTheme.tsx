@@ -55,6 +55,7 @@ ThemedStyleSheet.registerTheme({
 export const THEME = {
   primary: PRIMARY,
   secondary: SECONDARY,
+  white: WHITE,
 };
 
 const typography: some = {
