@@ -13,15 +13,15 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './pages/HomePage/Loadable';
-import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
+import { Layout } from './components/layout';
 
 export function App() {
   const { i18n } = useTranslation();
   return (
     <BrowserRouter>
       <Helmet
-        titleTemplate="%s - React Boilerplate"
+        titleTemplate="%s - Verycious"
         defaultTitle="React Boilerplate"
         htmlAttributes={{ lang: i18n.language }}
       >
@@ -29,8 +29,8 @@ export function App() {
       </Helmet>
 
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
+        {/* <Route exact path="/login" component={HomePage} /> */}
+        <Route path="*" component={Layout} />
       </Switch>
       <GlobalStyle />
     </BrowserRouter>
