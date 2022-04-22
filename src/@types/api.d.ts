@@ -1,38 +1,42 @@
 // GET /products
 type GETProductsRequest = {
-  limit: number;
-  skip?: number;
-  keyword?: number;
+  q?: string;
+  page?: number;
+  orderBy?: "asc" | "desc";
+  pageSize: number;
+  sortBy?: "create_at" | "price" | "name";
+  status?: Product["status"];
 };
 type GetProductsResponse = {
   page: number;
   pageSize: number;
   products: Product[];
+  total: number;
 };
 // POST /product
 type CreateProductRequest = Pick<
   Product,
-  | 'name'
-  | 'avatar'
-  | 'categoryId'
-  | 'description'
-  | 'price'
-  | 'unit'
-  | 'quantityOfStock'
-  | 'weight'
-  | 'length'
-  | 'height'
+  | "name"
+  | "avatar"
+  | "categoryId"
+  | "description"
+  | "price"
+  | "unit"
+  | "quantityOfStock"
+  | "weight"
+  | "length"
+  | "height"
 >;
 type CreateProductResponse = Product;
 
 // GET /products/:id
 
-type GetProductDetail = Product;
+type GetProductDetail = { product: Product };
 
 // PUT /product
 type UpdateProductRequest = Omit<
   Partial<Product>,
-  'createAt' | 'status' | 'updateAt' | 'deleteAt'
+  "createAt" | "status" | "updateAt" | "deleteAt"
 >;
 
 // POST /admin.pending-product/:id/approve
@@ -45,7 +49,7 @@ type GetOrdersResponse = {
   stats: {
     total;
   };
-  orders: Omit<Order, 'contactId' | 'userId'>[];
+  orders: Omit<Order, "contactId" | "userId">[];
 };
 
 // GET Provider
@@ -114,3 +118,38 @@ type GetCustomerOrdersResponse = {
   };
   orders?: Order[];
 };
+
+// Get account/role
+
+type GetAccountRoleResponse = {
+  items: AccountRole[];
+  total: number;
+};
+
+// POST upload
+type UploadResponse = {
+  data: {
+    fileName: string;
+    publicUrl: string;
+    url: string;
+    downloadUrl?: string;
+    size?: number;
+    contentType?: string;
+  };
+  code: string;
+  message: string;
+};
+
+//GET Info
+
+interface AccountInfo {
+  caId: string;
+  dateOfBirth: string;
+  email: string;
+  emailInfo: string;
+  gender?: string;
+  id: string;
+  profilePhoto?: string;
+  phone?: string;
+  name: string;
+}

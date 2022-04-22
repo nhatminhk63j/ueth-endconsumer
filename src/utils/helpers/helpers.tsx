@@ -1,4 +1,4 @@
-import { UAParser } from 'ua-parser-js';
+import { UAParser } from "ua-parser-js";
 
 const has = Object.prototype.hasOwnProperty;
 
@@ -8,29 +8,29 @@ export const checkDeviceType = () => {
 };
 
 export const isMobile = () => {
-  return checkDeviceType().device.type === 'mobile';
+  return checkDeviceType().device.type === "mobile";
 };
 
-export const isEmpty = prop => {
+export const isEmpty = (prop) => {
   return (
     prop === null ||
     prop === undefined ||
-    (has.call(prop, 'length') && prop.length === 0) ||
+    (has.call(prop, "length") && prop.length === 0) ||
     (prop.constructor === Object && Object.keys(prop).length === 0)
   );
 };
 
-export const isEmptyOrSpaces = val => {
+export const isEmptyOrSpaces = (val) => {
   return isEmpty(val) || val.match(/^ *$/) !== null;
 };
 
-export const isEmail = email => {
+export const isEmail = (email) => {
   const re =
     /^(([^<>()[\]\\.,;:\s@\\"]+(\.[^<>()[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 };
 
-export const isPhone = phone => {
+export const isPhone = (phone) => {
   const re = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
   return re.test(phone);
 };
@@ -64,18 +64,18 @@ export const debounce = (func, timeout = 300) => {
 };
 
 export const formatBytes = (a: number, b = 2) => {
-  if (0 === a) return '0 Bytes';
+  if (0 === a) return "0 Bytes";
   const c = 0 > b ? 0 : b,
     d = Math.floor(Math.log(a) / Math.log(1024));
   return (
     parseFloat((a / Math.pow(1024, d)).toFixed(c)) +
-    ' ' +
-    ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][d]
+    " " +
+    ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][d]
   );
 };
 
 export const convertTime = (value: number) => {
-  if (value === 0) return '0h';
+  if (value === 0) return "0h";
   else {
     const secondToHour = value / 3600;
     const hours = Math.floor(secondToHour);
@@ -85,15 +85,15 @@ export const convertTime = (value: number) => {
     if (hours === 0 && minutes !== 0) return `${minutes}min`;
     if (minutes === 0 && hours === 0 && seconds !== 0) return `${seconds}s`;
     if (minutes === 0 && hours === 0 && seconds === 0) return `0h`;
-    return hours !== 0 ? `${hours}h ${minutes}min` : '0h';
+    return hours !== 0 ? `${hours}h ${minutes}min` : "0h";
   }
 };
 export const convertImageBase64 = (content: any) => {
-  if (isEmpty(content)) return '';
+  if (isEmpty(content)) return "";
   return `data:image/jpeg;base64,${content}`;
 };
 
 export const convertBase64 = (content: any, contentType: string) => {
-  if (isEmpty(content)) return '';
+  if (isEmpty(content)) return "";
   return `data:${contentType};base64,${content}`;
 };

@@ -4,9 +4,7 @@ import firebase from './firebaseConfig';
 // import tingAudio from 'assets/icons/ting.mp3';
 import { TOKEN } from 'constants/constants';
 
-interface Props {
-  children: any;
-}
+interface Props {}
 export const firebaseUnregister = async () => {
   const messaging = firebase.messaging();
   await messaging
@@ -24,7 +22,7 @@ export const firebaseUnregister = async () => {
         // localStorage.removeItem(REFRESH_TOKEN);
       }
     })
-    .catch(err => {});
+    .catch((err) => {});
 };
 export const firebaseRegister = async () => {
   const messaging = firebase.messaging();
@@ -43,20 +41,19 @@ export const firebaseRegister = async () => {
     })
     .catch(function (err) {});
 };
-const Firebase: React.FunctionComponent<Props> = props => {
+const Firebase: React.FunctionComponent<Props> = (props) => {
   let messaging;
-  if (firebase.messaging.isSupported()) {
-    messaging = firebase.messaging();
+  if (firebase.messaging.isSupported()){
+   messaging = firebase.messaging();
   }
   React.useEffect(() => {
     if (localStorage.getItem(TOKEN) && messaging) firebaseRegister(); // eslint-disable-next-line
   }, [messaging]);
   React.useEffect(() => {
-    messaging &&
-      messaging.onMessage((res: any) => {
-        // const audioPlayer = new Audio(tingAudio);
-        // audioPlayer.play();
-      });
+    messaging && messaging.onMessage((res: any) => {
+      // const audioPlayer = new Audio(tingAudio);
+      // audioPlayer.play();
+    });
   }, [messaging]);
 
   return <>{props.children}</>;

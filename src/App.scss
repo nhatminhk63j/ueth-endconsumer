@@ -1,0 +1,87 @@
+@import './assets/theme/colors.module.scss';
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.ellipsis-text {
+  text-overflow: ellipsis;
+  margin: 0;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  &::after {
+    content: '...';
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: white;
+  }
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.common-input {
+  border: 1px solid #cbd5e0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 44px;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.svgFill * {
+  fill: inherit;
+  stroke: inherit;
+}
+
+.svgFillAll * {
+  fill: inherit;
+  stroke: inherit;
+}
+
+.svgFill *[fill='white'] {
+  fill: white;
+}
+
+.svgFill *[stroke='white'] {
+  stroke: white;
+}
+
+svg {
+  display: block;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: $GREY_300;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: $GREY_400;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bkc-account {
+  background: linear-gradient(0deg, $GREY_100 50%, $GREEN_400 50%);
+}

@@ -1,58 +1,70 @@
-/**
- * index.tsx
- *
- * This is the entry file for the application, only setup and boilerplate
- * code.
- */
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider } from "styled-components";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import { SnackbarProvider } from "notistack";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { MUI_THEME, THEME } from "assets/theme/setupTheme";
+import store from "configStore";
+import LocaleProvider from "utils/localeProvider/LocaleProvider";
+import * as serviceWorker from "./serviceWorker";
+import { StylesProvider } from "@material-ui/styles";
+import Firebase from "./firebase/Firebase";
+import {
+  ExtendedStringifyOptions,
+  QueryParamProvider,
+  transformSearchStringJsonSafe,
+} from "use-query-params";
 
-import 'react-app-polyfill/ie11';
-import 'react-app-polyfill/stable';
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("../firebase-messaging-sw.js")
+    .then(function (registration) {
+      console.log("Registration successful:", registration.scope);
+    })
+    .catch(function (err) {
+      console.log("Service worker registration failed, error:", err);
+    });
+}
 
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-
-// Use consistent styling
-import 'sanitize.css/sanitize.css';
-
-// Import root app
-import { App } from 'app';
-
-import { HelmetProvider } from 'react-helmet-async';
-
-import { configureAppStore } from 'store/configureStore';
-
-import reportWebVitals from 'reportWebVitals';
-
-// Initialize languages
-import './locales/i18n';
-import { ThemeProvider } from '@mui/material/styles';
-import theme from 'styles/theme';
-
-const store = configureAppStore();
-const MOUNT_NODE = document.getElementById('root') as HTMLElement;
+const queryStringifyOptions: ExtendedStringifyOptions = {
+  transformSearchString: transformSearchStringJsonSafe,
+};
 
 ReactDOM.render(
-  <Provider store={store}>
-    <HelmetProvider>
-      <React.StrictMode>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </React.StrictMode>
-    </HelmetProvider>
-  </Provider>,
-  MOUNT_NODE,
+  <React.Fragment>
+    <Provider store={store}>
+      <LocaleProvider>
+        <StylesProvider injectFirst>
+          <ThemeProvider theme={THEME}>
+            <MuiThemeProvider theme={MUI_THEME}>
+              <SnackbarProvider maxSnack={3}>
+                <BrowserRouter>
+                  <QueryParamProvider
+                    ReactRouterRoute={Route}
+                    stringifyOptions={queryStringifyOptions}
+                  >
+                    <Firebase>
+                      <App />
+                    </Firebase>
+                  </QueryParamProvider>
+                </BrowserRouter>
+              </SnackbarProvider>
+            </MuiThemeProvider>
+          </ThemeProvider>
+        </StylesProvider>
+      </LocaleProvider>
+    </Provider>
+  </React.Fragment>,
+  document.getElementById("root")
 );
-
-// Hot reloadable translation json files
-if (module.hot) {
-  module.hot.accept(['./locales/i18n'], () => {
-    // No need to render the App again because i18next works with the hooks
-  });
-}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+serviceWorker.register();

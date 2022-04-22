@@ -2,6 +2,7 @@ interface Product extends BaseRepository {
   name: string;
   description?: string;
   price: number;
+  orderCount?: number;
   quantityOfStock: number;
   categoryId?: number;
   avatar: string;
@@ -9,14 +10,16 @@ interface Product extends BaseRepository {
   weight?: number;
   height?: number;
   length?: number;
-  status: string;
+  status: "PENDING" | "APPROVED" | "DISABLED";
   category?: ProductCategory;
-  provider: ProductProvider;
+  provider?: ProductProvider;
   display?: boolean;
+  stoke?: number;
+  desciprtion?: string;
 }
 
-type ProductCategory = Pick<Category, 'name' | 'id'>;
-type ProductProvider = Pick<Provider, 'name' | 'id' | 'avatar' | 'address'>;
+type ProductCategory = Pick<Category, "name" | "id">;
+type ProductProvider = Pick<Provider, "name" | "id" | "avatar" | "address">;
 interface Category extends BaseRepository {
   name: string;
   avatar: string;

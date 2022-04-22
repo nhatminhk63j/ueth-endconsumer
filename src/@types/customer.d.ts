@@ -4,7 +4,7 @@ interface Customer extends BaseRepository {
   phoneNumber?: string;
   email?: string;
   address?: string;
-  status: 'enabled' | 'disabled';
+  status: "enabled" | "disabled";
   emailConfirm?: boolean;
   dob?: Moment | string;
   numberOfOders?: number;
@@ -13,7 +13,7 @@ interface Customer extends BaseRepository {
 interface CustomerContact extends BaseRepository {
   name?: string;
   phoneNumber?: string;
-  addressCode?: 'company' | 'home' | string;
+  addressCode?: "company" | "home" | string;
   addressName: string;
   address: string;
   userID: string;

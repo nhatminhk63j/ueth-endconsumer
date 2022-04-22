@@ -3,19 +3,19 @@ interface Provider extends BaseRepository {
   address: string;
   avatar: string;
   lat?: number;
-  long?: number;
+  lon?: number;
   contactEmail?: string;
   contactPhoneNumber?: string;
   employers?: Employer[];
-  status: 'enabled' | 'disabled';
+  status: "enabled" | "disabled";
 }
 
 type ProviderEmployer = Pick<
   Provider,
-  'id' | 'name' | 'avatar' | 'contactEmail' | 'contactPhoneNumber'
+  "id" | "name" | "avatar" | "contactEmail" | "contactPhoneNumber"
 >;
 interface Employer extends BaseRepository {
   userId: string;
-  role: 'OWNER' | 'SALE';
+  role: "OWNER" | "SALE";
   provider: ProviderEmployer;
 }

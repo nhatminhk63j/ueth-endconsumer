@@ -1,4 +1,4 @@
-type Moment = import('moment').Moment;
+type Moment = import("moment").Moment;
 
 interface EffectState {
   loading?: boolean;
@@ -20,3 +20,16 @@ interface BaseRepository {
   updateAt?: timestamp;
   deleteAt?: timestamp;
 }
+
+interface AccountRole {
+  id: number;
+  code: string;
+  name: string;
+}
+
+type OptionSelects<T = any, K = any> = {
+  label: string;
+  value: T;
+  key?: K;
+  id?: ID;
+}[];

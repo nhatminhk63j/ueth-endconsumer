@@ -1,9 +1,9 @@
-import axios, { AxiosRequestConfig } from 'axios';
-import { sha256 } from 'js-sha256';
-import { TOKEN, REFRESH_TOKEN, UUID } from 'constants/constants';
-import { configs } from './config';
-import { isEmpty } from './helpers';
-import { getRefreshToken, requestLogout } from 'system/systemAction';
+import axios, { AxiosRequestConfig } from "axios";
+import { sha256 } from "js-sha256";
+import { TOKEN, REFRESH_TOKEN, UUID } from "constants/constants";
+import { configs } from "./config";
+import { isEmpty } from "./helpers";
+import { getRefreshToken, requestLogout } from "modules/system/systemAction";
 
 const getAppHash = () => {
   const currentTime = new Date().getTime();
@@ -11,10 +11,10 @@ const getAppHash = () => {
     sha256(
       `${currentTime / 1000 - ((currentTime / 1000) % 300)}:${
         configs().APP_KEY
-      }`,
+      }`
     ),
-    'hex',
-  ).toString('base64');
+    "hex"
+  ).toString("base64");
 };
 
 const request = axios.create();
@@ -39,15 +39,15 @@ request.interceptors.request.use(
         ...config?.headers,
         appId: configs().APP_ID,
         appHash: getAppHash(),
-        'device-id': `${localStorage.getItem(UUID)}`,
+        "device-id": `${localStorage.getItem(UUID)}`,
         Authorization: `Bearer ${localStorage.getItem(TOKEN)}`,
-        version: '1.0',
+        version: "9.0",
       },
     };
     if (
       isEmpty(localStorage.getItem(TOKEN)) ||
-      config.url.includes('/login') ||
-      config.url.includes('/refresh-token') ||
+      config.url.includes("/login") ||
+      config.url.includes("/refresh-token") ||
       temp.noAuthentication
     ) {
       delete temp.headers[`login-token`];
@@ -56,28 +56,29 @@ request.interceptors.request.use(
     delete temp.noAuthentication;
     return temp;
   },
-  error => Promise.reject(error),
+  (error) => Promise.reject(error)
 );
 
 request.interceptors.response.use(
   (response: any) => {
-    if (response?.request?.responseType === 'blob') {
+    if (response?.request?.responseType === "blob") {
       return response?.request?.response;
     } else {
       const resData: some = JSON.parse(response?.request?.response);
       if (resData.code === 3003) {
         window.alert(
-          'Hệ thống yêu cầu cài đặt thời gian chính xác để thực hiện tính năng chat hỗ trợ. Quý khách vui lòng mở phần Cài đặt của thiết bị này và chuyển Ngày Giờ sang chế độ Tự động',
+          "Hệ thống yêu cầu cài đặt thời gian chính xác để thực hiện tính năng chat hỗ trợ. Quý khách vui lòng mở phần Cài đặt của thiết bị này và chuyển Ngày Giờ sang chế độ Tự động"
         );
       }
+
       if (resData.code === 401) {
         const originalRequest = response.config;
         const refreshToken = localStorage.getItem(REFRESH_TOKEN);
         if (
           refreshToken &&
           !originalRequest._retry &&
-          response.config.url.includes('/login') &&
-          response.config.url.includes('/refresh-token')
+          response.config.url.includes("/login") &&
+          response.config.url.includes("/refresh-token")
         ) {
           originalRequest._retry = true;
           if (!isAlreadyFetchingAccessToken) {
@@ -99,17 +100,17 @@ request.interceptors.response.use(
                 requestLogout();
               });
           }
-          const retryOriginalRequest = new Promise(resolve => {
+          const retryOriginalRequest = new Promise((resolve) => {
             addSubscriber((access_token: any) => {
-              originalRequest.headers.Authorization = 'Bearer ' + access_token;
+              originalRequest.headers.Authorization = "Bearer " + access_token;
               resolve(
                 axios(originalRequest)
-                  .then(resRequest => {
+                  .then((resRequest) => {
                     return resRequest?.request?.response;
                   })
                   .catch((error: any) => {
                     return Promise.reject(error.response);
-                  }),
+                  })
               );
             });
           });
@@ -128,16 +129,14 @@ request.interceptors.response.use(
   },
   (error: any) => {
     return Promise.reject(error.response);
-  },
+  }
 );
 
 const api = <T,>(options: AxiosRequestConfig): Promise<T> => {
-  console.log(options);
-
   return request({
-    baseURL: configs().BASE_URL,
+    baseURL: configs().GATE_URl + "/ueth-merchant/api/v1/",
     ...options,
-    headers: { 'Accept-Language': 'vi', ...options.headers },
+    headers: { "Accept-Language": "vi", ...options.headers },
   }) as any;
 };
 
