@@ -17,21 +17,26 @@ const useStyle = makeStyles((theme) => ({
     width: "100%",
   },
 }));
+
+const bgi =
+  "https://storage.googleapis.com/phms-dev/photo/img/456483xHLFUj/mask-group.png";
 const OneRowListCategory = ({ title, categories }: OneRowListCategoryProps) => {
   const classes = useStyle();
-  // categories = 5 * categories;
   return (
-    <WrapList title={title}>
+    <WrapList title={title} background={bgi}>
       <Box className={classes.grid}>
         <Grid
           container
-          spacing={7}
-          alignItems="flex-end"
+          spacing={4}
+          alignItems="flex-start"
           justifyContent="center"
         >
           {categories.map((item) => (
             <Grid item key={item.id}>
-              <Box justifyContent="center">
+              <Box
+                justifyContent="center"
+                style={{ textAlign: "center", width: 150 }}
+              >
                 <Link to={`category/${item.id}`}>
                   <img
                     src={item.avatar}

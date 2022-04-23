@@ -1,14 +1,10 @@
-import {
-  Box,
-  Container,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
+import { Box, Container, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 
 interface WrapListProps {
   title: string;
   children: any;
+  background?: string;
 }
 
 const useStyle = makeStyles((theme) => ({
@@ -16,20 +12,21 @@ const useStyle = makeStyles((theme) => ({
     // width: "70%",
     display: "flex",
     flexDirection: "column",
-    marginTop: 20,
-    marginBottom: 40,
     gap: 50,
+    padding: "20px 0",
   },
 }));
 
-const WrapList = ({ title, children }: WrapListProps) => {
+const WrapList = ({ title, background, children }: WrapListProps) => {
   const classes = useStyle();
 
   return (
-    <Container className={classes.container}>
-      <Typography variant="subtitle1">{title}</Typography>
-      <Box>{children}</Box>
-    </Container>
+    <Box style={{ backgroundImage: `url(${background})` }}>
+      <Container className={classes.container}>
+        <Typography variant="h6">{title}</Typography>
+        <Box>{children}</Box>
+      </Container>
+    </Box>
   );
 };
 

@@ -1,10 +1,9 @@
 import Banner from "components/Banner";
 import { useCatergory } from "hooks/useCategory";
-import { defaultProducts, useProduct, useProducts } from "hooks/useProducts";
+import { defaultProducts } from "hooks/useProducts";
 import PageConainer from "layout/PageContainer";
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { useQueryParams, NumberParam, StringParam } from "use-query-params";
 import OneRowListCategory from "./components/OneRowListCategory";
 import OneRowListProduct from "./components/OneRowListProduct";
 
@@ -23,14 +22,15 @@ const HomaPage: React.FC<RouteComponentProps> = ({ history }) => {
   //   ...query,
   // } as GETProductsRequest);
   // console.log(products)
-  for (let index = 0; index < 3; index++) {
-    categories = categories.concat(categories);
-  }
+
   const products = defaultProducts;
 
   return (
     <PageConainer headerProps={{ noColor: true }}>
-      <Banner img="https://storage.googleapis.com/vntravel/fresh/img/457900jfV/banner-freeship.jpg" />
+      <Banner
+        img="https://storage.googleapis.com/vntravel/fresh/img/457900jfV/banner-freeship.jpg"
+        offset={-70}
+      />
       <OneRowListCategory title="Danh mục sản phẩm" categories={categories} />
       <OneRowListProduct title="Khuyến mại" products={products} />
       <Banner img="https://storage.googleapis.com/vntravel/fresh/img/457900jfV/banner-freeship.jpg" />

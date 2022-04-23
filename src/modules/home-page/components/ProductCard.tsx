@@ -1,5 +1,4 @@
 import { Box, makeStyles, Paper, Typography } from "@material-ui/core";
-import { StylesContext } from "@material-ui/styles";
 import { ShopIcon } from "assets/icons";
 import React from "react";
 interface ProductCardProps {
@@ -11,13 +10,14 @@ const useStyle = makeStyles((theme) => ({
     width: 180,
     height: 280,
     borderRadius: 4,
-    'a': {
-        textDecoration: 'none'
-    }
+    a: {
+      textDecoration: "none",
+    },
   },
   image: {
     width: "100%",
     height: 160,
+    borderRadius: 5,
     objectFit: "cover",
   },
   info: {
@@ -33,7 +33,7 @@ const useStyle = makeStyles((theme) => ({
     flexDirection: "column",
     display: "flex",
     justifyContent: "flex-end",
-     textDecoration: 'none',
+    textDecoration: "none",
   },
 }));
 

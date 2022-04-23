@@ -4,6 +4,7 @@ import { WHITE } from "assets/theme/colors";
 import PageConainer from "layout/PageContainer";
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import ListProductSugest from "./components/ListProductSugest";
 import ProductInfoBox from "./components/ProductInfoBox";
 import ProviderLine from "./components/ProviderLine";
 
@@ -43,8 +44,7 @@ const ProductDetail: React.FC<RouteComponentProps> = ({ history }) => {
             <Typography variant="h6" color="textPrimary">
               Các sản phẩm khác của cửa hàng
             </Typography>
-
-            {/* <ListProductSugest /> */}
+            <ListProductSugest />
           </Box>
           <Box className={classes.box}>
             <Typography variant="h6" color="textPrimary">
