@@ -1,13 +1,6 @@
-import {
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
-import { AddCircle, CardTravelOutlined, Remove } from "@material-ui/icons";
-import { BACK_GROUND, WHITE } from "assets/theme/colors";
+import { Box, Button, Grid, makeStyles, Typography } from "@material-ui/core";
+import { CardTravelOutlined, Remove } from "@material-ui/icons";
+import { BACK_GROUND } from "assets/theme/colors";
 import PlaceShip from "modules/common/PlaceShip";
 import React from "react";
 import PriceBox from "./PriceBox";

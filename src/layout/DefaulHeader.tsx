@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
-import { GREY_300, GREY_700, PRIMARY } from "assets/theme/colors";
+import { GREY_300, GREY_700, PRIMARY, SECONDARY } from "assets/theme/colors";
 import Logo from "components/Logo";
 import React from "react";
 
@@ -59,7 +59,7 @@ const DefaulHeader: React.FC<HeaderProps> = ({ noColor }) => {
     <Box
       className={classes.root}
       style={{
-        backgroundColor: noColor ? "transparent" : PRIMARY,
+        backgroundColor: noColor ? "transparent" : SECONDARY,
       }}
     >
       <Container>
@@ -91,7 +91,7 @@ const DefaulHeader: React.FC<HeaderProps> = ({ noColor }) => {
           <Box className={classes.right_nav}>
             <Badge
               badgeContent={<span className={classes.icon_badge}>{4}</span>}
-              color="secondary"
+              color="default"
             >
               <ShoppingCartOutlined color="inherit" />
             </Badge>

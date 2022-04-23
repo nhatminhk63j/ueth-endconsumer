@@ -22,7 +22,7 @@ const Banner: React.FC<BannerProps> = () => {
       <img
         className={classes.img}
         alt=""
-        src="https://storage.googleapis.com/tripi-assets/mytour/images/Group%201969.png"
+        src="https://storage.googleapis.com/vntravel/fresh/img/458169DOY/myfresh-banner-danh-muc-webmm-01-01.jpg"
       />
     </Box>
   );

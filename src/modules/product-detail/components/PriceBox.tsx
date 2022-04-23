@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PriceBox: React.FC<PriceBoxProps> = ({}) => {
+const PriceBox: React.FC<PriceBoxProps> = () => {
   const classes = useStyles();
 
   return (
