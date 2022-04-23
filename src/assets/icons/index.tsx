@@ -38,3 +38,4 @@ export { ReactComponent as IconVisibilityOff } from "./icon_visibility_off.svg";
 export { ReactComponent as CloseIcon } from "./icon_close.svg";
 export { ReactComponent as LocationIcon } from "./ic_location.svg";
 export { ReactComponent as ButtonCloseIcon } from "./btn-icon-close.svg";
+// export { ReactComponent as DeliveryIcon } from "./ship_icon.svg";

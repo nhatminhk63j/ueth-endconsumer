@@ -14,6 +14,7 @@ import NotFound from "modules/system/NotFound";
 import { AppState } from "modules/rootReducer";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import HomaPage from "modules/home-page/HomaPage";
+import ProductDetail from "modules/product-detail/ProductDetail";
 
 function mapStateToProps(state: AppState) {
   return {
@@ -31,6 +32,7 @@ const App: React.FC<RouteComponentProps<any> & Props> = (props) => {
           <Route exact path={routes.LOGIN} component={Login} />
           <Route exact path={routes.NOT_FOUND} component={NotFound} />
           <Route exact path={"/"} component={HomaPage} />
+          <Route exact path={"/product/:id"} component={ProductDetail} />
         </Switch>
       </React.Suspense>
     </>
