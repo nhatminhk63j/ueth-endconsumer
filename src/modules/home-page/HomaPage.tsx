@@ -29,7 +29,7 @@ const HomaPage: React.FC<RouteComponentProps> = ({ history }) => {
     <PageConainer headerProps={{ noColor: true }}>
       <Banner
         img="https://storage.googleapis.com/vntravel/fresh/img/457900jfV/banner-freeship.jpg"
-        offset={-70}
+        offset={-100}
       />
       <OneRowListCategory title="Danh mục sản phẩm" categories={categories} />
       <OneRowListProduct title="Khuyến mại" products={products} />
