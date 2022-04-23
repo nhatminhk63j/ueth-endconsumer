@@ -11065,6 +11065,11 @@ react-moment-proptypes@^1.6.0:
   dependencies:
     moment ">=1.6.0"
 
+react-multi-carousel@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/react-multi-carousel/-/react-multi-carousel-2.8.0.tgz#94a74245989b74211c9fcfa02c71009a3da3f487"
+  integrity sha512-xuxQVGGiH8yWDDWgt9Z9+C+zzoACuBT740cV+6To52DYCwLlQGJIntDFLOCqMsO85Ist1x+630HA8lazb/a/tA==
+
 react-number-format@^4.7.3:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-4.9.1.tgz#62b3450b43c911f9227e770a8ea9fa606696e52e"

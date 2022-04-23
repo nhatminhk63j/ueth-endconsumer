@@ -1,4 +1,4 @@
-import colors from './colors.module.scss';
+import colors from "./colors.module.scss";
 
 export const {
   TEAL,
@@ -93,6 +93,6 @@ export const {
   NEUTRAL_300,
 } = colors;
 
-export const BACK_GROUND = BLUE_50;
+export const BACK_GROUND = "#F1F5F9";
 export const PRIMARY = GREEN_300;
 export const SECONDARY = ORANGE;

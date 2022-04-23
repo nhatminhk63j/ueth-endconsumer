@@ -5,23 +5,23 @@ import DefaultFooter from "./DefaultFooter";
 
 interface PageContainerProps {
   headerProps?: HeaderProps;
+  classContent?: string;
 }
 
 const PageConainer: React.FC<PageContainerProps> = ({
   headerProps,
+  classContent,
   children,
 }) => {
   return (
     <Box style={{ minHeight: "100vh" }}>
       <DefaulHeader {...headerProps} />
-      <PageContent>{children}</PageContent>
+      <Box style={{ minHeight: "80vh" }} className={classContent}>
+        {children}
+      </Box>
       <DefaultFooter />
     </Box>
   );
 };
 
 export default PageConainer;
-
-const PageContent: React.FC = ({ children }) => {
-  return <Box style={{ minHeight: "80vh" }}>{children}</Box>;
-};
