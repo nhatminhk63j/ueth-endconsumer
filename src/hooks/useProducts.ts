@@ -93,7 +93,7 @@ export const defaultProducts: Product[] = [
     },
     provider: {
       id: "12",
-      address: "Ha Noi",
+      address: "Hung Yen",
       name: "Nguyen van A",
       avatar:
         "https://storage.googleapis.com/public-tripi/fresh/img/455080aGecuu/nem-tom-hum.jpg?w=640&q=75",
@@ -116,7 +116,7 @@ export const defaultProducts: Product[] = [
     },
     provider: {
       id: "12",
-      address: "Ha Noi",
+      address: "Ha Nam",
       name: "Nguyen van A",
       avatar:
         "https://storage.googleapis.com/public-tripi/fresh/img/455080aGecuu/nem-tom-hum.jpg?w=640&q=75",
@@ -139,7 +139,7 @@ export const defaultProducts: Product[] = [
     },
     provider: {
       id: "12",
-      address: "Ha Noi",
+      address: "Bac Giang",
       name: "Nguyen van A",
       avatar:
         "https://storage.googleapis.com/public-tripi/fresh/img/455080aGecuu/nem-tom-hum.jpg?w=640&q=75",
