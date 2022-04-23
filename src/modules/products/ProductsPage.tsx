@@ -7,12 +7,10 @@ import {
   FormLabel,
   Grid,
   makeStyles,
-  Typography,
   Checkbox,
-  FormHelperText,
 } from "@material-ui/core";
 import { WHITE } from "assets/theme/colors";
-import { defaultProducts, useProducts } from "hooks/useProducts";
+import { useProducts } from "hooks/useProducts";
 import PageConainer from "layout/PageContainer";
 import ProductCard from "modules/common/ProductCard";
 import WrapList from "modules/common/WrapList";
@@ -46,11 +44,28 @@ const useStyle = makeStyles((theme) => ({
 const ProductsPage = () => {
   const classes = useStyle();
   const [query] = useQueryParams({
+    page: NumberParam,
+    pageSize: NumberParam,
     q: StringParam,
+    orderBy: StringParam,
+    sortBy: StringParam,
+    status: StringParam,
   });
   console.log(query);
-  const products = defaultProducts.concat(defaultProducts);
-  const addressArray = [...new Set(products.map((a) => a.provider?.address))];
+  const [{ products }] = useProducts({
+    ...{ page: 1, pageSize: 2 },
+    ...query,
+  } as GETProductsRequest);
+  const strimAddress = (address: any): string => {
+    const [_address] = address.split(",").slice(-1);
+    // console.log(address.split(","));
+    // console.log(address);
+    return address ? _address : "Hà Nội";
+  };
+
+  const addressArray = [
+    ...new Set(products.map((a) => strimAddress(a.provider?.address))),
+  ];
   return (
     <PageConainer classContent={classes.content}>
       <Container>
@@ -85,7 +100,7 @@ const ProductsPage = () => {
               <Box>
                 <Grid container spacing={3}>
                   {products.map((item) => (
-                    <Grid item>
+                    <Grid item key={item.id}>
                       <ProductCard product={item} />
                     </Grid>
                   ))}

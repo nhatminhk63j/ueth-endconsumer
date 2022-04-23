@@ -11,6 +11,7 @@ const useStyle = makeStyles((theme) => ({
   container: {
     // width: "70%",
     display: "flex",
+    textAlign: "center",
     flexDirection: "column",
     gap: 50,
     padding: "20px 0",
@@ -23,7 +24,7 @@ const WrapList = ({ title, background, children }: WrapListProps) => {
   return (
     <Box style={{ backgroundImage: `url(${background})` }}>
       <Container className={classes.container}>
-        <Typography variant="h6">{title}</Typography>
+        <Typography variant="h5">{title}</Typography>
         <Box>{children}</Box>
       </Container>
     </Box>

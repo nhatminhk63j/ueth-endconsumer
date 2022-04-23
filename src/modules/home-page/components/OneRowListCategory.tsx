@@ -37,7 +37,8 @@ const OneRowListCategory = ({ title, categories }: OneRowListCategoryProps) => {
                 justifyContent="center"
                 style={{ textAlign: "center", width: 150 }}
               >
-                <Link to={`category/${item.id}`}>
+                {/* <Link to={`category/${item.id}`}> */}
+                <Link to={`products`}>
                   <img
                     src={item.avatar}
                     alt={item.avatar}

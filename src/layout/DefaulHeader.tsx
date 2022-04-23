@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/styles";
 import { GREY_300, GREY_700, PRIMARY } from "assets/theme/colors";
 import Logo from "components/Logo";
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyle = makeStyles({
   root: {
@@ -33,7 +34,7 @@ const useStyle = makeStyles({
     color: GREY_700,
     height: 50,
     flexGrow: 1,
-    maxWidth: "50%",
+    // maxWidth: "50%",
   },
   container: {
     display: "flex",
@@ -55,6 +56,12 @@ export interface HeaderProps {
 
 const DefaulHeader: React.FC<HeaderProps> = ({ noColor }) => {
   const classes = useStyle();
+  let history = useHistory();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    history.push(`/search?q=${e.target[0].value}`);
+  };
   return (
     <Box
       className={classes.root}
@@ -69,32 +76,41 @@ const DefaulHeader: React.FC<HeaderProps> = ({ noColor }) => {
           alignItems="center"
           className={classes.container}
         >
-          <Button>
-            <Logo />
-          </Button>
-          <InputBase
-            endAdornment={
-              <Search
-                style={{
-                  width: 50,
-                  color: PRIMARY,
-                  fontSize: 14,
-                  fontWeight: "normal",
-                }}
-              />
-            }
-            className={classes.search}
-            style={{ padding: "0 10px" }}
-            placeholder="Tìm kiếm sản phẩm, thương hiệu"
-          />
+          <Link to="/">
+            <Button>
+              <Logo />
+            </Button>
+          </Link>
+          <form onSubmit={(e) => handleSearch(e)} style={{ width: "50%" }}>
+            <InputBase
+              fullWidth
+              endAdornment={
+                <Search
+                  style={{
+                    width: 50,
+                    color: PRIMARY,
+                    fontSize: 14,
+                    fontWeight: "normal",
+                  }}
+                />
+              }
+              className={classes.search}
+              style={{ padding: "0 10px" }}
+              placeholder="Tìm kiếm sản phẩm, thương hiệu"
+            />
+          </form>
+
           <Box />
           <Box className={classes.right_nav}>
-            <Badge
-              badgeContent={<span className={classes.icon_badge}>{4}</span>}
-              color="default"
-            >
-              <ShoppingCartOutlined color="inherit" />
-            </Badge>
+            <Link to="/cart" style={{ color: "white" }}>
+              <Badge
+                badgeContent={<span className={classes.icon_badge}>{4}</span>}
+                color="default"
+              >
+                <ShoppingCartOutlined color="inherit" />
+              </Badge>
+            </Link>
+
             <Button color="inherit">Đăng nhập</Button>
             <Button color="inherit">Đăng ký</Button>
           </Box>

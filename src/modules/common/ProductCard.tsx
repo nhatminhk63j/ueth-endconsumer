@@ -2,6 +2,8 @@ import { Box, Button, makeStyles, Paper, Typography } from "@material-ui/core";
 import { ShopIcon } from "assets/icons";
 import { ORANGE, ORANGE_300, WHITE } from "assets/theme/colors";
 import React from "react";
+import { Link } from "react-router-dom";
+
 interface ProductCardProps {
   product: Product;
 }
@@ -26,6 +28,13 @@ const useStyle = makeStyles((theme) => ({
   },
   typo: {
     height: "48px",
+    textOverflow: "ellipsis",
+    wordWrap: "break-word",
+    overflow: "hidden",
+  },
+  address: {
+    height: "24px",
+    width: "60x",
     textOverflow: "ellipsis",
     wordWrap: "break-word",
     overflow: "hidden",
@@ -59,6 +68,13 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
+const strimAddress = (address: any): string => {
+  const [_address] = address.split(",").slice(-1);
+  // console.log(address.split(","));
+  // console.log(address);
+  return address ? _address : "Hà Nội";
+};
+
 const ProductCard = ({ product }: ProductCardProps) => {
   const classes = useStyle();
   return (
@@ -74,14 +90,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </Typography>
 
         <Box className={classes.row}>
-          <Typography variant="subtitle2">
-            {`${product?.provider?.address}`}
+          <Typography variant="subtitle2" className={classes.address}>
+            {`${strimAddress(product?.provider?.address)}`}
           </Typography>
 
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <ShopIcon className={classes.icon} />
             <Typography variant="subtitle2">
-              {`${product.quantityOfStock}${product.unit}`}
+              {product.quantityOfStock &&
+                `${product.quantityOfStock}${product.unit}`}
+              {!product.quantityOfStock && `10kg`}
             </Typography>
           </div>
         </Box>
@@ -91,12 +109,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
             {product.price.toLocaleString()}đ
           </Typography>
 
-          <Button
-            variant="contained"
-            className={`${classes.buyButton} ${classes.mt10}`}
-          >
-            Mua
-          </Button>
+          <Link to="/product/123" style={{ textDecoration: "none" }}>
+            <Button
+              variant="contained"
+              className={`${classes.buyButton} ${classes.mt10}`}
+            >
+              Mua
+            </Button>
+          </Link>
         </Box>
       </Box>
     </Paper>

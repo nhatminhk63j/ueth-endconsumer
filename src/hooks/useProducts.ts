@@ -5,11 +5,11 @@ import { useUpload } from "./useUpload";
 
 export const useProducts = (query?: GETProductsRequest) => {
   const { data, loading, error } = useAPI<GetProductsResponse>(
-    "provider/products",
+    "admin/products",
     {
       ...query,
     }
-  );
+  ); 
 
   return [
     {

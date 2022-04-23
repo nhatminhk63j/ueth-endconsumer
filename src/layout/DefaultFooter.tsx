@@ -44,7 +44,7 @@ const DefaultFooter = () => {
           <Grid container spacing={3}>
             <Grid item md={4}>
               <Typography variant="subtitle1" style={{ marginBottom: 20 }}>
-                Công ty cổ phần du lịch Việt Nam VNTravel
+                Công ty cổ phần ABC601
               </Typography>
               <Grid container alignItems="center" wrap="nowrap">
                 <Box style={{ minWidth: 35 }}>
@@ -79,19 +79,17 @@ const DefaultFooter = () => {
                     Q.1
                   </Typography>
                   <Typography variant="subtitle2">
-                    Văn phòng Hà Nội: Tầng 11, Tòa Peakview, 36 Hoàng Cầu, Đống
-                    Đa
+                    Văn phòng Hà Nội: sô 79, ngõ 59 Khúc Thừa Dụ, Cầu Giấy
                   </Typography>
                   <Typography variant="subtitle2">
-                    Văn phòng Hà Nội: Tầng 11, Tòa Peakview, 36 Hoàng Cầu, Đống
-                    Đa
+                    Văn phòng Hà Nội: sô 79, ngõ 59 Khúc Thừa Dụ, Cầu Giấy
                   </Typography>
                 </Box>
               </Grid>
             </Grid>
             <Grid item md={4}>
               <Typography variant="subtitle1">
-                Công ty cổ phần du lịch Việt Nam VNTravel
+                Công ty cổ phần ABC601
               </Typography>
               <Grid
                 container
@@ -114,15 +112,14 @@ const DefaultFooter = () => {
                     Tổng đài chăm sóc: 1900 2083 (nhánh 4)
                   </Typography>
                   <Typography variant="subtitle2">
-                    Văn phòng Hà Nội: Tầng 11, Tòa Peakview, 36 Hoàng Cầu, Đống
-                    Đa
+                    Văn phòng Hà Nội: sô 79, ngõ 59 Khúc Thừa Dụ, Cầu Giấy
                   </Typography>
                 </Box>
               </Grid>
             </Grid>
             <Grid item md={4}>
               <Typography variant="subtitle1">
-                Công ty cổ phần du lịch Việt Nam VNTravel
+                Công ty cổ phần ABC601
               </Typography>
               <Grid
                 container
@@ -145,8 +142,7 @@ const DefaultFooter = () => {
                     Tổng đài chăm sóc: 1900 2083 (nhánh 4)
                   </Typography>
                   <Typography variant="subtitle2">
-                    Văn phòng Hà Nội: Tầng 11, Tòa Peakview, 36 Hoàng Cầu, Đống
-                    Đa
+                    Văn phòng Hà Nội: sô 79, ngõ 59 Khúc Thừa Dụ, Cầu Giấy
                   </Typography>
                 </Box>
               </Grid>
@@ -157,7 +153,7 @@ const DefaultFooter = () => {
 
       <Box className={classes.banner}>
         <Container style={{ padding: 0 }}>
-          Copyright © 2020 - CÔNG TY CỔ PHẦN DU LỊCH VIỆT NAM VNTRAVEL - Đăng ký
+          Copyright © 2020 - CÔNG TY CỔ PHẦN ABC601 - Đăng ký
           kinh doanh số 0108886908 - do Sở Kế hoạch và Đầu tư thành phố Hà Nội
           cấp lần đầu ngày 04 tháng 09 năm 2019
         </Container>

@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { WHITE } from "assets/theme/colors";
-import { defaultProducts, useProducts } from "hooks/useProducts";
+import { useProducts } from "hooks/useProducts";
 import PageConainer from "layout/PageContainer";
 import ProductCard from "modules/common/ProductCard";
 import React from "react";
@@ -15,7 +15,7 @@ const useStyle = makeStyles({
   content: {
     backgroundColor: "#f1f5f9",
     fontFamily: "Varela Round",
-    padding:30
+    padding: 30,
   },
   statement: {
     padding: 30,
@@ -36,10 +36,19 @@ const useStyle = makeStyles({
 const SearchPage = () => {
   const classes = useStyle();
   const [query] = useQueryParams({
+    page: NumberParam,
+    pageSize: NumberParam,
     q: StringParam,
+    orderBy: StringParam,
+    sortBy: StringParam,
+    status: StringParam,
   });
   console.log(query);
-  const products = defaultProducts.concat(defaultProducts);
+  const [{ products }] = useProducts({
+    ...{ page: 1, pageSize: 2 },
+    ...query,
+  } as GETProductsRequest);
+
   return (
     <PageConainer classContent={classes.content}>
       <Container>
