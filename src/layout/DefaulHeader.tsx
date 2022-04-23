@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
-import { GREY_300, GREY_700, PRIMARY, SECONDARY } from "assets/theme/colors";
+import { GREY_300, GREY_700, PRIMARY } from "assets/theme/colors";
 import Logo from "components/Logo";
 import React from "react";
 
@@ -17,7 +17,7 @@ const useStyle = makeStyles({
     backgroundColor: PRIMARY,
     color: "white",
     borderBottom: `1px solid ${GREY_300}`,
-    padding: "10px 0",
+    padding: "20px 0",
   },
   logo: {
     fill: "white",
@@ -59,7 +59,7 @@ const DefaulHeader: React.FC<HeaderProps> = ({ noColor }) => {
     <Box
       className={classes.root}
       style={{
-        backgroundColor: noColor ? "transparent" : SECONDARY,
+        backgroundColor: noColor ? "transparent" : "#FF9B25",
       }}
     >
       <Container>

@@ -2,7 +2,7 @@ import { makeStyles, Box, Grid } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
-import WrapList from "./WrapList";
+import WrapList from "../../common/WrapList";
 interface OneRowListProductProps {
   title: string;
   products: Product[];
