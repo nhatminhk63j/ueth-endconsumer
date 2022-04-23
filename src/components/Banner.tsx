@@ -2,11 +2,13 @@ import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import React from "react";
 
-interface BannerProps {}
+interface BannerProps {
+  img: string
+}
 
 const useStyle = makeStyles({
   root: {
-    marginTop: -70,
+    // marginTop: -70,
   },
   img: {
     width: "100%",
@@ -14,7 +16,7 @@ const useStyle = makeStyles({
   },
 });
 
-const Banner: React.FC<BannerProps> = () => {
+const Banner: React.FC<BannerProps> = ({img}) => {
   const classes = useStyle();
 
   return (
@@ -22,7 +24,7 @@ const Banner: React.FC<BannerProps> = () => {
       <img
         className={classes.img}
         alt=""
-        src="https://storage.googleapis.com/tripi-assets/mytour/images/Group%201969.png"
+        src={img}
       />
     </Box>
   );
