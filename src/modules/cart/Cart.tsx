@@ -3,10 +3,11 @@ import { makeStyles } from "@material-ui/styles";
 import { useCart } from "hooks/useCart";
 import PageConainer from "layout/PageContainer";
 
-import React from "react";
+import React, { useState } from "react";
 import { FormattedNumber } from "react-intl";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { ListProductInCart } from "./components/ListProductInCart";
+import OrderPayment from "./OrdePayment";
 
 const useStyle = makeStyles({
   content: {
@@ -24,8 +25,9 @@ const useStyle = makeStyles({
 const Cart: React.FC<RouteComponentProps> = () => {
   const classes = useStyle();
   const [{ cartItems }] = useCart();
+  const [checkout, setCheckout] = useState(false);
 
-  // return <OrderPayment />;
+  if (checkout) return <OrderPayment items={cartItems} />;
 
   return (
     <PageConainer classContent={classes.content}>
@@ -50,7 +52,7 @@ const Cart: React.FC<RouteComponentProps> = () => {
               color="secondary"
               fullWidth
               style={{ padding: "10px 20px" }}
-              disabled
+              onClick={() => setCheckout(true)}
             >
               Thanh toán
             </Button>

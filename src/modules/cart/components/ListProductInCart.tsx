@@ -18,6 +18,8 @@ import { FormattedNumber } from "react-intl";
 interface ListProductInCartProps {
   items?: CartItem[];
   loading?: boolean;
+  noCheckBox?: boolean;
+  noEdit?: boolean;
 }
 
 const useStyle = makeStyles({
@@ -35,24 +37,16 @@ const useStyle = makeStyles({
 export const ListProductInCart: React.FC<ListProductInCartProps> = ({
   items,
   loading,
+  noCheckBox,
+  noEdit,
 }) => {
   const classes = useStyle();
   const columns = React.useMemo(() => {
-    // STT, avatar + tên, số điện thoại, email, địa chỉ hiện tại, ngày tham gia, trạng thái, số đơn hàng
     const baseColumns: (Column<CartItem> & { index: number })[] = [
-      {
-        index: 0,
-        title: <Checkbox />,
-        width: 40,
-        styleHeader: { maxWidth: "40px" },
-        render: (record: some, index: number) => {
-          return <Checkbox />;
-        },
-      },
       {
         index: 1,
         title: "Sản phẩm",
-        width: 500,
+        width: 400,
         render: (record, index: number) => {
           return <ProductCart {...record.product} />;
         },
@@ -74,15 +68,19 @@ export const ListProductInCart: React.FC<ListProductInCartProps> = ({
         render: (record, index: number) => {
           return (
             <Grid container alignItems="center">
-              <Button variant="contained" className={classes.btn_circle}>
-                <Remove />
-              </Button>
+              {!noEdit && (
+                <Button variant="contained" className={classes.btn_circle}>
+                  <Remove />
+                </Button>
+              )}
               <Typography style={{ margin: "0 20px" }}>
                 {record.quantity}
               </Typography>
-              <Button variant="contained" className={classes.btn_circle}>
-                <Add />
-              </Button>
+              {!noEdit && (
+                <Button variant="contained" className={classes.btn_circle}>
+                  <Add />
+                </Button>
+              )}
             </Grid>
           );
         },
@@ -103,6 +101,17 @@ export const ListProductInCart: React.FC<ListProductInCartProps> = ({
           );
         },
       },
+    ];
+    const editColumns = [
+      {
+        index: 0,
+        title: <Checkbox />,
+        width: 40,
+        styleHeader: { maxWidth: "40px" },
+        render: (record: some, index: number) => {
+          return <Checkbox />;
+        },
+      },
       {
         index: 8,
         title: "",
@@ -117,6 +126,10 @@ export const ListProductInCart: React.FC<ListProductInCartProps> = ({
     ];
 
     let columns = [...baseColumns];
+
+    if (!noEdit) {
+      columns = columns.concat(editColumns);
+    }
 
     return columns.filter((a) => a).sort((a, b) => a.index - b.index);
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -15,7 +15,7 @@ type OrderContact = Pick<
   | "phoneNumber"
   | "addressName"
 >;
-type PaymentMethod = "code" | "banking" | "visa" | "mastercard" | "vnpayqr";
+type PaymentMethod = "code" | "banking" | "mastercard" | "vnpayqr";
 type ProviderOrder = Pick<
   Provider,
   "id" | "address" | "name" | "contactPhoneNumber"

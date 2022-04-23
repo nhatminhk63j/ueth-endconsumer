@@ -24,7 +24,7 @@ const ProductCart: React.FC<Product> = (product) => {
   const classes = useStyle();
 
   return (
-    <Grid container className={classes.root}>
+    <Grid container className={classes.root} wrap="nowrap">
       <img className={classes.img} alt="" src={product.avatar} />
       <Box style={{ marginTop: 10 }}>
         <Typography className={classes.title}>{product.name}</Typography>

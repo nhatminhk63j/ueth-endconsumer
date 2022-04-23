@@ -21,8 +21,4 @@ const defaultCardItems: CartItem[] = [
     product: defaultProducts[3],
     quantity: 3,
   },
-  {
-    product: defaultProducts[4],
-    quantity: 2,
-  },
 ];
